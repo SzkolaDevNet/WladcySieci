@@ -1,0 +1,20 @@
+version: '3'
+services:
+  jenkins:
+    image: 'jenkins:latest'
+    restart: unless-stopped
+    ports:
+      - '8080:8080'
+      - '8443:8443'
+      - '50000:50000'
+
+    volumes:
+      - 'jenkins_data:/bitnami/jenkins'
+      - 'jenkins_home:/var/jenkins_home'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+
+volumes:
+  jenkins_data:
+    driver: local
+  jenkins_home:
+    driver: local

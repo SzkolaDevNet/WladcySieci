@@ -1,0 +1,5 @@
+node {
+    ansiColor('xterm') {
+        stage "To jest nazwa kroku"
+    }
+}

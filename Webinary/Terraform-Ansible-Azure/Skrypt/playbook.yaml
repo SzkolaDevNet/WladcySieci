@@ -1,0 +1,18 @@
+---
+- name: Playbook do instalacji nginx
+  hosts: all
+  become: yes
+  vars:
+    ansible_user: "azureadmin"
+    ansible_password: "Test123!!"
+  tasks:
+    - name: Dodaj nginx jeżeli nie istnieje
+      apt:
+        name: nginx
+        state: latest
+        update_cache: yes
+    - name: Dodaj stronę index.html
+      template:
+        src: ./index.html.j2
+        dest: /var/www/html/index.html
+        mode: 0644
